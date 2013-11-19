@@ -22,6 +22,8 @@
 @property (nonatomic, unsafe_unretained) IBOutlet UIBarButtonItem *colorButton;
 @property (nonatomic, unsafe_unretained) IBOutlet UIBarButtonItem *toolButton;
 @property (nonatomic, unsafe_unretained) IBOutlet UIBarButtonItem *alphaButton;
+// Email - thermal button
+
 
 // actions
 - (IBAction)undo:(id)sender;

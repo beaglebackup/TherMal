@@ -12,6 +12,8 @@
 #import "Encasements.h"
 #import "Interceptors.h"
 #import "Units.h"
+#import <MessageUI/MessageUI.h>
+
 
 
 @interface ViewController : UIViewController <UITextFieldDelegate> {
@@ -77,6 +79,8 @@
 - (IBAction)pickedMeter:(id)sender;
 - (IBAction)multiSwitched:(id)sender;
 - (IBAction)calculatemTotal:(id)sender;
+- (IBAction)thermalEmailButton:(id)sender;
+
 
 
 @end
