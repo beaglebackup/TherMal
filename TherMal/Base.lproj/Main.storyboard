@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="SRp-3i-z0g">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="5RS-EN-ByO">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="SRp-3i-z0g" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" id="Oav-mL-qjH">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="3xW-gX-dCc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e0r-Cx-uK6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-412" y="109"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
@@ -240,12 +255,35 @@
                                             <action selector="calculatemTotal:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="xm3-Ar-hyA"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NqY-Yk-M7Y">
+                                        <rect key="frame" x="254" y="15" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="->">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="8zK-lO-Q9d" kind="push" id="b23-Kr-huy"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="KPr-wu-8su">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="lju-jT-UB8">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9sj-QS-v5W">
+                                <rect key="frame" x="233" y="5" width="71" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="->">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="clear" destination="bGG-Po-bOo" id="9be-3h-Tqy"/>
                         <outlet property="encasementsTextField" destination="r4U-FH-cwH" id="Nfc-Mj-ACX"/>
@@ -273,6 +311,114 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="fYz-yp-egm">
+            <objects>
+                <viewController id="8zK-lO-Q9d" customClass="ACEViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oFH-Vh-GWW"/>
+                        <viewControllerLayoutGuide type="bottom" id="ln3-Bb-YjP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="x6D-vS-nhU">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z8c-ar-JbT">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <barButtonItem enabled="NO" title="Undo" id="HVF-km-Ewn">
+                                        <connections>
+                                            <action selector="undo:" destination="8zK-lO-Q9d" id="kGp-1U-bbi"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem enabled="NO" title="Redo" id="Onf-di-W2H">
+                                        <connections>
+                                            <action selector="redo:" destination="8zK-lO-Q9d" id="e3p-mr-Whb"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Clear" id="sFv-gT-dpg">
+                                        <connections>
+                                            <action selector="clear:" destination="8zK-lO-Q9d" id="DjZ-CH-4xa"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="RaU-m1-C5W"/>
+                                    <barButtonItem systemItem="camera" id="6Mf-PM-2ub">
+                                        <connections>
+                                            <action selector="takeScreenshot:" destination="8zK-lO-Q9d" id="zWw-C9-GGv"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QRo-Kr-ZlZ" customClass="ACEDrawingView">
+                                <rect key="frame" x="0.0" y="44" width="320" height="480"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="1" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="IOt-cz-rra">
+                                <rect key="frame" x="18" y="386" width="284" height="29"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <action selector="widthChange:" destination="8zK-lO-Q9d" eventType="valueChanged" id="YIY-kY-Xbg"/>
+                                </connections>
+                            </slider>
+                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.10000000149011612" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="cOp-RE-Ssa">
+                                <rect key="frame" x="18" y="387" width="284" height="29"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <action selector="alphaChange:" destination="8zK-lO-Q9d" eventType="valueChanged" id="Wlx-2H-6nu"/>
+                                </connections>
+                            </slider>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o34-J2-FlU">
+                                <rect key="frame" x="150" y="64" width="151" height="225"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BNs-Oj-vPb">
+                                <rect key="frame" x="0.0" y="423" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="Black" id="u6a-zO-gJi">
+                                        <connections>
+                                            <action selector="colorChange:" destination="8zK-lO-Q9d" id="y7P-rf-rOd"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Pen" id="q7Y-9Q-5GG">
+                                        <connections>
+                                            <action selector="toolChange:" destination="8zK-lO-Q9d" id="WbI-3x-dmK"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="QDd-Zq-gpj"/>
+                                    <barButtonItem title="Width" id="SN7-7s-EoV">
+                                        <connections>
+                                            <action selector="toggleWidthSlider:" destination="8zK-lO-Q9d" id="HtS-EQ-sQK"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Alpha" id="h5p-aa-hGO">
+                                        <connections>
+                                            <action selector="toggleAlphaSlider:" destination="8zK-lO-Q9d" id="C9H-Mw-Y2E"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="eSo-S0-5sa"/>
+                    <connections>
+                        <outlet property="colorButton" destination="u6a-zO-gJi" id="Z3S-Eq-qfK"/>
+                        <outlet property="drawingView" destination="QRo-Kr-ZlZ" id="q09-Dc-HYf"/>
+                        <outlet property="lineAlphaSlider" destination="cOp-RE-Ssa" id="w4K-8J-CBr"/>
+                        <outlet property="lineWidthSlider" destination="IOt-cz-rra" id="9RU-Td-xuP"/>
+                        <outlet property="previewImageView" destination="o34-J2-FlU" id="XCX-hG-Y5V"/>
+                        <outlet property="redoButton" destination="Onf-di-W2H" id="Wva-jq-fte"/>
+                        <outlet property="toolButton" destination="q7Y-9Q-5GG" id="jaH-iL-e3P"/>
+                        <outlet property="undoButton" destination="HVF-km-Ewn" id="66o-Jf-Eba"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vAr-VP-fjE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="586" y="107"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
