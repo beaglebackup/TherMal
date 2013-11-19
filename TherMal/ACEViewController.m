@@ -63,6 +63,10 @@
     });
 }
 
+- (IBAction)BackAction:(id)sender {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 - (IBAction)undo:(id)sender
 {
     [self.drawingView undoLatestStep];
@@ -209,5 +213,6 @@
 {
     self.drawingView.lineAlpha = sender.value;
 }
+
 
 @end

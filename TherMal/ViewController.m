@@ -26,6 +26,10 @@
     self.enca = [[Encasements alloc] init];
     self.inte = [[Interceptors alloc] init];
     self.unit = [[Units alloc] init];
+    self.parkingSwitchStatus = @"ON";
+    self.multiSwitchStatus = @"ON";
+    self.parkingType = @"Street parking costs $300.00";
+
     
     self.parkingCost = 0;
     [self.streetButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 2.0, 0.0, 2.0)];
@@ -153,6 +157,7 @@
     // Unselect the buttons
     self.meterButton.layer.borderWidth = 0;
     self.streetButton.layer.borderWidth = 0;
+
 }
 
 - (void)changeSwitch:(id)sender{
@@ -180,6 +185,7 @@
 - (IBAction)pickedStreet:(id)sender {
     int streetCost = 300;
     self.parkingCost = [[NSNumber numberWithInt:streetCost] floatValue];
+    self.parkingType = @"Street parking costs $300.00";
     
     // Mark button as selected
     self.streetButton.layer.borderColor = [UIColor blueColor].CGColor;
@@ -194,6 +200,7 @@
 - (IBAction)pickedMeter:(id)sender {
     int meterCost = 500;
     self.parkingCost = [[NSNumber numberWithInt:meterCost] floatValue];
+    self.parkingType = @"Meter parking costs $500.00";
     
     // Mark meter as selected
     self.meterButton.layer.borderColor = [UIColor blueColor].CGColor;
@@ -221,6 +228,8 @@
         self.mtotalLabel.textColor = [UIColor blackColor];
         self.totalButton.titleLabel. textColor = [UIColor orangeColor];
         self.totalLabel.textColor = [UIColor grayColor];
+        self.parkingSwitchStatus = @"ON";
+        self.multiSwitchStatus = @"ON";
         
     } else{
         // Execute any code when the switch is OFF
@@ -236,6 +245,8 @@
         self.mtotalLabel.textColor = [UIColor whiteColor];
         self.totalButton.titleLabel. textColor = [UIColor blackColor];
         self.totalLabel.textColor = [UIColor blackColor];
+        self.parkingSwitchStatus = @"OFF";
+        self.multiSwitchStatus = @"OFF";
         
     }
 
@@ -278,16 +289,66 @@
 - (IBAction)multiSwitch:(UISwitch *)sender {
 }
 - (IBAction)thermalEmailButton:(id)sender {
+ //put variables
+    NSString *length = self.lengthTextField.text;
+    NSString *width = self.widthTextField.text;
+    NSString *follow = self.followupsTextField.text;
+    NSString *encasement = self.encasementsTextField.text;
+    NSString *interceptors = self.interceptorsTextField.text;
+    NSString *parkingSwitchStatus = self.parkingSwitchStatus;
+    NSString *parkingType = self.parkingType;
+    NSString *thermalcost = self.thermalcostLabel.text;
+    NSString *followupcost = self.followupcostLabel.text;
+    NSString *extracost = self.extracostsLabel.text;
+    NSString *total = self.totalLabel.text;
+    NSString *multiSwitchStatus = self.multiSwitchStatus;
+    NSString *mtotal = self.mtotalLabel.text;
+    
+    
+    
     // Email Subject
     NSString *emailTitle = @"Estimate";
     // Email Content
-    NSString *messageBody = @"Please add estimate to PestPac!";
+    NSString *messageBody = @"<h1>Thermal Estimate</h1><h3>Please add estimate to PestPac!</h3>";
+    
+    messageBody =
+        [[[[[[[[[[@"<h1>Thermal Estimate</h1><h3>Please add estimate to PestPac!</h3><p>Length: "
+           stringByAppendingString: length]
+           stringByAppendingString:@"<br />Width: "]
+           stringByAppendingString: width]
+           stringByAppendingString:@"<br /><br />Number of follow-ups: "]
+           stringByAppendingString: follow]
+           stringByAppendingString:@"<br />Number of encasements: "]
+           stringByAppendingString: encasement]
+           stringByAppendingString:@"<br />Number of interceptors: "]
+           stringByAppendingString: interceptors]
+           stringByAppendingString:@"<br /><br />"];
+    
+    if ([parkingSwitchStatus isEqual: @"ON"]) {
+        messageBody = [[[messageBody stringByAppendingString:@"Parking type: "] stringByAppendingString: parkingType] stringByAppendingString:@"<br /><br />"];
+    }
+    
+    messageBody = [[[[[[[[[messageBody stringByAppendingString:@"<strong>Thermal cost:</strong> "]
+                   stringByAppendingString: thermalcost]
+                   stringByAppendingString:@"<br /><strong>Follow-up cost:</strong> "]
+                   stringByAppendingString: followupcost]
+                   stringByAppendingString:@"<br /><strong>Extra cost:</strong> "]
+                   stringByAppendingString: extracost]
+                   stringByAppendingString:@"</p><h4>Total: "]
+                   stringByAppendingString: total]
+                   stringByAppendingString:@"</h4>"];
+    
+    if ([multiSwitchStatus isEqual: @"ON"]) {
+        messageBody = [[[messageBody stringByAppendingString:@"<h4>Multi-total: "] stringByAppendingString: mtotal] stringByAppendingString:@"</h4>"];
+    }
+    
+    
     // To address
     NSArray *toRecipents = [NSArray arrayWithObjects:@"gabriel@pestecipm.com", nil];
     MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
     mc.mailComposeDelegate = self;
     [mc setSubject:emailTitle];
-    [mc setMessageBody:messageBody isHTML:NO];
+    [mc setMessageBody:messageBody isHTML:YES];
     [mc setToRecipients:toRecipents];
     
     //Present mail view controller on screen

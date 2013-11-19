@@ -61,7 +61,9 @@
 @property (strong, nonatomic) Units *unit;
 
 @property float parkingCost;
-
+@property (strong, nonatomic) NSString *parkingSwitchStatus;
+@property (strong, nonatomic) NSString *multiSwitchStatus;
+@property (strong, nonatomic) NSString *parkingType;
 
 
 // Action

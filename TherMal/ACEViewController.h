@@ -22,7 +22,8 @@
 @property (nonatomic, unsafe_unretained) IBOutlet UIBarButtonItem *colorButton;
 @property (nonatomic, unsafe_unretained) IBOutlet UIBarButtonItem *toolButton;
 @property (nonatomic, unsafe_unretained) IBOutlet UIBarButtonItem *alphaButton;
-// Email - thermal button
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *backActionButton;
+
 
 
 // actions
@@ -30,6 +31,7 @@
 - (IBAction)redo:(id)sender;
 - (IBAction)clear:(id)sender;
 - (IBAction)takeScreenshot:(id)sender;
+- (IBAction)BackAction:(id)sender;
 
 // settings
 - (IBAction)colorChange:(id)sender;

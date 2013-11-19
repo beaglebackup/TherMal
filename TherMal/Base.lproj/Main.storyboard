@@ -260,7 +260,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2iN-Sg-mMn">
-                                        <rect key="frame" x="0.0" y="17" width="320" height="30"/>
+                                        <rect key="frame" x="111" y="17" width="99" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Thermal">
                                             <attributedString key="attributedTitle">
@@ -354,6 +354,11 @@
                                             <action selector="clear:" destination="8zK-lO-Q9d" id="DjZ-CH-4xa"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem title="X" id="o1n-JR-xPa">
+                                        <connections>
+                                            <action selector="BackAction:" destination="8zK-lO-Q9d" id="GSu-bj-8cn"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="RaU-m1-C5W"/>
                                     <barButtonItem systemItem="camera" id="6Mf-PM-2ub">
                                         <connections>
@@ -418,6 +423,7 @@
                     <navigationItem key="navigationItem" id="eSo-S0-5sa"/>
                     <connections>
                         <outlet property="alphaButton" destination="h5p-aa-hGO" id="DmL-X1-1Q8"/>
+                        <outlet property="backActionButton" destination="o1n-JR-xPa" id="LGs-Fd-r2g"/>
                         <outlet property="colorButton" destination="u6a-zO-gJi" id="Z3S-Eq-qfK"/>
                         <outlet property="drawingView" destination="QRo-Kr-ZlZ" id="q09-Dc-HYf"/>
                         <outlet property="lineAlphaSlider" destination="cOp-RE-Ssa" id="w4K-8J-CBr"/>
